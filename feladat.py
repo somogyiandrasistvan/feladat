@@ -1,12 +1,12 @@
 #megoldas
 def eredmeny(jatekoslapok: [int], geplapok: [int]):
     #teszt
-    jatekospont: int = 0
-    geppont: int = 0
+    jatekospont: int = szamolas(jatekoslapok)
+    geppont: int = szamolas(geplapok)
     if jatekospont > 21:
-        print("A játékos vesztett!")
+        return "játékos vesztett!"
     elif geppont > 21:
-        print("A gép vesztett nyertél!")
+        return "gép vesztett!"
 
 def szamolas(lapok)->int:
     pontok: int = 0
