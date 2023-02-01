@@ -1,0 +1,3 @@
+#eredmeny
+def eredmeny():
+    #teszt
