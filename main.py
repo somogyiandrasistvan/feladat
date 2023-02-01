@@ -1,3 +1,0 @@
-import elsofeladat
-
-elsofeladat.eredmeny()
