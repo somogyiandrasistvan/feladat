@@ -4,19 +4,24 @@ def eredmeny(jatekoslapok: [int], geplapok: [int]):
     geppont: int = szamolas(geplapok)
     jatekoslapok_osszeg = len(jatekoslapok)
     geplapok_osszeg = len(geplapok)
-    if jatekospont > 21:
-        return "játékos vesztett!"
+    if jatekospont <= 21 and geppont <= 21:
+        if jatekospont > geppont:
+            return "Játékos nyert!"
+        elif geppont > jatekospont:
+            return "Gép nyert!"
+        elif geppont == jatekospont:
+            if jatekoslapok_osszeg < geplapok_osszeg:
+                return "Játékos nyert!"
+            elif jatekoslapok_osszeg > geplapok_osszeg:
+                return "Gép nyert!"
+            else:
+                return "Döntetlen osztoztok a nyereségen"
+    elif jatekospont > 21:
+        return "Játékos vesztett!"
     elif geppont > 21:
-        return "gép vesztett!"
-    elif jatekospont > geppont:
-        return "A játékos van közelebb"
-    elif geppont > jatekospont:
-        return "A gép van közelebb"
-    elif geppont == jatekospont:
-        if jatekoslapok_osszeg > geplapok_osszeg:
-            return "lapok összegéből gép vesztett!"
-        elif geplapok_osszeg > jatekoslapok_osszeg:
-            return "lapok összegéből játékos vesztett!"
+        return "Gép vesztett!"
+    elif jatekospont > 21 and geppont > 21:
+        return "Döntetlen osztoztok a nyereségen"
 
 def szamolas(lapok)->int:
     pontok: int = 0
@@ -31,7 +36,7 @@ def jatekos_vesztett_teszt():
     geppontok = [2, 7, 9]
     #teszt
     kapott = eredmeny(jatekospontok, geppontok)
-    vart = "játékos vesztett!"
+    vart = "Játékos vesztett!"
     if kapott == vart:
         print("Az első teszt sikeres!")
     else:
@@ -41,7 +46,7 @@ def gep_vesztett_teszt():
     geppontok = [10, 5, 7]
     #teszt
     kapott = eredmeny(jatekospontok, geppontok)
-    vart = "gép vesztett!"
+    vart = "Gép vesztett!"
     if kapott == vart:
         print("A második teszt sikeres!")
     else:
@@ -61,7 +66,7 @@ def jatekos_kozelebb_teszt():
     jatekospontok = [9, 10]
     geppontok = [8, 10]
     kapott = eredmeny(jatekospontok, geppontok)
-    vart = "A játékos van közelebb"
+    vart = "Játékos nyert!"
     if kapott == vart:
         print("A negyedik teszt sikeres!")
     else:
@@ -71,7 +76,7 @@ def gep_kozelebb_teszt():
     jatekospontok = [8, 10]
     geppontok = [9, 10]
     kapott = eredmeny(jatekospontok, geppontok)
-    vart = "A gép van közelebb"
+    vart = "Gép nyert!"
     if kapott == vart:
         print("Az ötödik teszt sikeres!")
     else:
@@ -82,20 +87,20 @@ def gep_kozelebb_teszt():
 
 
 def gep_vesztett_dontetlen_teszt():
-    jatekospontok = [9, 5, 5]
-    geppontok = [9, 10]
+    jatekospontok = [9, 10]
+    geppontok = [9, 5, 5]
     kapott = eredmeny(jatekospontok, geppontok)
-    vart = "lapok összegéből gép vesztett!"
+    vart = "Játékos nyert!"
     if kapott == vart:
         print("A hatodik teszt sikeres!")
     else:
         print("A hatodik teszt megbukott")
 
 def jatekos_vesztett_dontetlen_teszt():
-    jatekospontok = [9, 10]
-    geppontok = [9, 5, 5]
+    jatekospontok = [9, 5, 5]
+    geppontok = [9, 10]
     kapott = eredmeny(jatekospontok, geppontok)
-    vart = "lapok összegéből játékos vesztett!"
+    vart = "Gép nyert!"
     if kapott == vart:
         print("A hetedik teszt sikeres!")
     else:
@@ -107,6 +112,7 @@ def tesztek():
     gep_vesztett_teszt()
     lapok_osszege_teszt()
     jatekos_kozelebb_teszt()
+    gep_kozelebb_teszt()
     gep_vesztett_dontetlen_teszt()
     jatekos_vesztett_dontetlen_teszt()
 
