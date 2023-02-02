@@ -82,10 +82,6 @@ def gep_kozelebb_teszt():
     else:
         print("Az ötödik teszt megbukott")
 
-
-
-
-
 def gep_vesztett_dontetlen_teszt():
     jatekospontok = [9, 10]
     geppontok = [9, 5, 5]
@@ -106,6 +102,16 @@ def jatekos_vesztett_dontetlen_teszt():
     else:
         print("A hetedik teszt megbukott")
 
+def dontetlen_teszt():
+    jatekospontok = [10, 10]
+    geppontok = [10, 10]
+    kapott = eredmeny(jatekospontok, geppontok)
+    vart = "Döntetlen osztoztok a nyereségen"
+    if kapott == vart:
+        print("A nyolcadik teszt sikeres!")
+    else:
+        print("A nyolcadik teszt megbukott")
+
 
 def tesztek():
     jatekos_vesztett_teszt()
@@ -115,6 +121,7 @@ def tesztek():
     gep_kozelebb_teszt()
     gep_vesztett_dontetlen_teszt()
     jatekos_vesztett_dontetlen_teszt()
+    dontetlen_teszt()
 
 
 tesztek()
