@@ -6,22 +6,25 @@ def eredmeny(jatekoslapok: [int], geplapok: [int]):
     geplapok_osszeg = len(geplapok)
     if jatekospont <= 21 and geppont <= 21:
         if jatekospont > geppont:
-            return "Játékos nyert!"
+            s = "Játékos nyert!"
         elif geppont > jatekospont:
-            return "Gép nyert!"
+            s = "Gép nyert!"
         elif geppont == jatekospont:
             if jatekoslapok_osszeg < geplapok_osszeg:
-                return "Játékos nyert!"
+                s = "Játékos nyert!"
             elif jatekoslapok_osszeg > geplapok_osszeg:
-                return "Gép nyert!"
+                s = "Gép nyert!"
             else:
-                return "Döntetlen osztoztok a nyereségen"
-    elif jatekospont > 21:
-        return "Játékos vesztett!"
-    elif geppont > 21:
-        return "Gép vesztett!"
-    elif jatekospont > 21 and geppont > 21:
-        return "Döntetlen osztoztok a nyereségen"
+                s = "Döntetlen osztoztok a nyereségen"
+    else:
+        if jatekospont > 21:
+            s = "Játékos vesztett!"
+        if geppont > 21:
+            s = "Gép vesztett!"
+        if jatekospont > 21 and geppont > 21:
+            s = "Döntetlen osztoztok a nyereségen"
+
+    return s
 
 def szamolas(lapok)->int:
     pontok: int = 0
@@ -41,6 +44,7 @@ def jatekos_vesztett_teszt():
         print("Az első teszt sikeres!")
     else:
         print("Az első teszt megbukott")
+
 def gep_vesztett_teszt():
     jatekospontok = [2, 7, 9]
     geppontok = [10, 5, 7]
